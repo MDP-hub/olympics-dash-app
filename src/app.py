@@ -268,7 +268,7 @@ def timeline_olympics(countries, method, season):
     title = countries_data.query("country_3_letter_code == @countries").iloc[0, 1]
 
     #set up the chart title (based on the methodology)
-    chart_title = f"Men & Women {method.replace("_", " ").capitalize()} medals Over Time"
+    chart_title = f"Men & Women {method.capitalize().replace("_", " ")} medals Over Time"
 
     return fig, title, chart_title
 
