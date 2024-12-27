@@ -239,6 +239,7 @@ def update_map(olympics, methodology):
 def timeline_olympics(countries, method, season):
 
     #set up fields based on the methodology and the data based on the country and season
+    methodology_sel = method.capitalize().replace("_", " ")
     male_field = 'men_' + method
     female_field = 'women_' + method
     timeline_data = (olympics_data
@@ -254,7 +255,7 @@ def timeline_olympics(countries, method, season):
             y=[male_field, female_field],
             markers=True,
             custom_data='game_year')
-           .update_yaxes(title=method.replace("_", " ").capitalize())
+           .update_yaxes(title=methodology_sel)
            .update_layout(showlegend=False,
                           margin= {"r":0,"t":0,"l":0,"b":0},
                           paper_bgcolor= '#272b30')
@@ -268,7 +269,7 @@ def timeline_olympics(countries, method, season):
     title = countries_data.query("country_3_letter_code == @countries").iloc[0, 1]
 
     #set up the chart title (based on the methodology)
-    chart_title = f"Men & Women {method.capitalize().replace("_", " ")} medals Over Time"
+    chart_title = f"Men & Women {methodology_sel} medals Over Time"
 
     return fig, title, chart_title
 
